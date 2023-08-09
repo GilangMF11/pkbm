@@ -32,6 +32,26 @@ class DataPembayaranSPP_Model extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function getDataSiswaByNISN($nisn)
+    {
+        $this->db->select('tbl_siswa.*, tbl_jenis_spp.nominal_jenis, tbl_jenis_spp.kategori');
+        $this->db->from('tbl_siswa');
+        $this->db->join('tbl_jenis_spp', 'tbl_siswa.kode_jenisspp = tbl_jenis_spp.kode_jenisspp');
+        $this->db->where('tbl_siswa.nisn', $nisn);
+        return $this->db->get()->row();
+    }
+
+    public function getDataSIswaJoinJenisSPPById($id)
+    {
+        $this->db->select('tbl_siswa.*, tbl_jenis_spp.nominal_jenis, tbl_jenis_spp.kategori');
+        $this->db->from('tbl_siswa');
+        $this->db->join('tbl_jenis_spp', 'tbl_siswa.kode_jenisspp = tbl_jenis_spp.kode_jenisspp');
+        $this->db->where('tbl_siswa.id', $id);
+        return $this->db->get()->row();
+    }
+
+
+
     public function getDataPembayaranSiswa($kode_ta = null, $kode_kelas = null)
     {
         $this->db->select('tbl_siswa.*, tbl_jenis_spp.nominal_jenis, tbl_jenis_spp.kategori, tbl_pembayaran_spp.bulan, tbl_pembayaran_spp.kode_ta as ta_bayar');

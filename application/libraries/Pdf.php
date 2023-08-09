@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once('assets/dompdf/autoload.inc.php');
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Pdf
 {

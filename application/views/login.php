@@ -39,7 +39,7 @@
 
                 <form action="<?= base_url('Login/validation') ?>" method="post">
                     <div class="input-group mb-3">
-                        <input name="username" type="text" class="form-control" placeholder="Username">
+                        <input name="username" type="text" class="form-control" placeholder="NISN">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <i class="fas fa-user"></i>

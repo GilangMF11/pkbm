@@ -184,38 +184,7 @@
                       </div>
                     </div>
                     <hr>
-                    <!-- Data Input DPP -->
-                    <h3> Update Data DPP</h3>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Nominal DPP</label>
-                          <input type="text" class="form-control" name="nmnl_dpp" value="<?= $ubah['nominal_dpp'] ?>">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Jumlah Angsuran</label>
-                          <input type="text" class="form-control" name="jmlh_angsuran" value="<?= $ubah['jumlah_angsuran'] ?>">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
 
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Status</label>
-                          <select class="form-control" name="stts">
-                            <?php
-                            if ($ubah['status'] == '0') {
-                              echo "<option value = '0' selected>Belum Lunas</option>
-                          <option value ='1'>Lunas</option>";
-                            } else {
-                              echo "<option value = '0'>Belum Lunas</option>
-                          <option value ='1' selected>Lunas</option>";
-                            }
-                            ?>
-                          </select>
-                        </div>
-
-                      </div>
-                    </div>
                     <input type="submit" name="save" class="btn btn-primary" value="Save">
                   </div>
                   <!-- /.card-body -->

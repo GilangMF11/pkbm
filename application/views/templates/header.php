@@ -7,7 +7,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <link rel="icon" href="<?= base_url('assets/dist/img/pkmbm.png') ?>">
-  <title>PKMBM KEMBARAN PEMBAYARAN</title>
+  <title>PKBM KEMBARAN PEMBAYARAN</title>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->

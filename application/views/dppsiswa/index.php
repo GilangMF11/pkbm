@@ -152,31 +152,6 @@
                         </div>
                       </div>
                       <hr>
-                      <!-- Data Input DPP -->
-                      <h3>Data DPP</h3>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Nominal DPP</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="nmnl_dpp" value="<?php echo set_value('nmnl_dpp'); ?>">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Jumlah Angsuran</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="jmlh_angsuran" value="<?php echo set_value('jmlh_angsuran'); ?>">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Status</label>
-                            <select class="form-control" name="stts">
-                              <option>--Pilih Status--</option>
-                              <option value="0">Belum Lunas</option>
-                              <option value="1">Lunas</option>
-                            </select>
-                          </div>
-                        </div>
-
-                      </div>
                       <input type="submit" name="save" class="btn btn-primary" value="Save">
                     </div>
                     <!-- /.card-body -->
@@ -230,7 +205,6 @@
                     <td>
                       <div class="btn-group">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailsiswa" data-nisn="<?= $row->nisn ?>">Detail Siswa</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#detailDPP" data-nisn="<?= $row->nisn ?>">Detail DPP</button>
                         <?php if ($this->session->userdata('level') == 'admin') { ?>
                           <a href="<?= base_url() ?>DataDPPSiswa/hapus/<?= $row->nisn ?>" class="btn btn-danger" onclick="return confirm('yakin ?')">Hapus</a>
                           <a href="<?= base_url() ?>DataDPPSiswa/ubah/<?= $row->nisn ?>" class="btn btn-warning">Update</a>

@@ -29,8 +29,8 @@
                     <center>
                       <p></p>
                       <h1 style="font-family: 'Times New Roman', Times, serif;"><b>--SELAMAT DATANG <?= $this->session->userdata('username') ?>--</b></h1>
-                      <h1 style="font-family: 'Times New Roman', Times, serif;"><b>di Sistem Informasi Pembayaran</b></h1>
-                      <h2 style="font-family: 'Times New Roman', Times, serif;"><b>SMKS PGRI PAKISAJI</b></h2>
+                      <h1 style="font-family: 'Times New Roman', Times, serif;"><b>di Sistem Informasi Pembayaran SPP</b></h1>
+                      <h2 style="font-family: 'Times New Roman', Times, serif;"><b>PKBM Kembaran</b></h2>
                       <p></p>
                     </center>
 
@@ -61,20 +61,6 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>Pembayaran</h3>
-
-                <p>UTS, UAS, UNBK</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-list"></i>
-              </div>
-              <a href="<?= base_url('DataPembayaranUjian') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">

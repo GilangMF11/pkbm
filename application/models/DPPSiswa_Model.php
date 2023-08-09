@@ -64,14 +64,11 @@ class DPPSiswa_Model extends CI_Model
 		return $this->db->get()->row();
 	}
 
-	public function tambah_data($nominal_angsuran)
+	public function tambah_data()
 	{
 		$data = array(
 			'nisn' => $this->input->post('Nisn'),
-			'nominal_dpp' => $this->input->post('nmnl_dpp'),
-			'jumlah_angsuran' => $this->input->post('jmlh_angsuran'),
-			'nominal_angsuran' => $nominal_angsuran,
-			'status' => $this->input->post('stts', true)
+			'nominal_dpp' => $this->input->post('nmnl_dpp')
 		);
 
 		$this->db->insert('tbl_dpp_siswa', $data);

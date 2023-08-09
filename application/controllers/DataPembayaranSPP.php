@@ -193,21 +193,28 @@ class DataPembayaranSPP extends CI_Controller
 	}
 
 	//PDF
-    public function generatePDF()
-    {
-        // Load any data needed for the PDF generation
-        $data['dataSiswa'] = $this->DataPembayaranSPP_Model->getDataSIswaJoinJenisSPP();
+    public function generatePDF($nisn)
+	{
+		// Load data for the specified student using their ID
+		$data['dataSiswa'] = $this->DataPembayaranSPP_Model->getDataSIswaJoinJenisSPPByNISN($nisn);
 
-        // Load the PDF view into a variable
-        $html = $this->load->view('DataPembayaranSPP/print_data_pembayaran_spp', $data, true);
+		if (!$data['dataSiswa']) {
+			// Handle the case where the student with the specified ID is not found
+			show_error('Student not found', 404);
+			return;
+		}
 
-        // Generate the PDF using Dompdf
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
+		// Load the PDF view into a variable
+		$html = $this->load->view('DataPembayaranSPP/print_data_pembayaran_spp', $data, true);
 
-        // Output the PDF to the browser
-        $dompdf->stream('data_pembayaran_spp.pdf', array('Attachment' => 0));
-    }
+		// Generate the PDF using Dompdf
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml($html);
+		$dompdf->setPaper('A4', 'portrait');
+		$dompdf->render();
+
+		// Output the PDF to the browser
+		$dompdf->stream('data_pembayaran_spp.pdf', array('Attachment' => 0));
+	}
+
 }

@@ -64,10 +64,7 @@ class DataDPPSiswa extends CI_Controller
 			show_404();
 		}
 		$this->form_validation->set_rules("Nisn", "nisn", "required|is_unique[tbl_dpp_siswa.nisn]|max_length[20]");
-		$this->form_validation->set_rules("nmnl_dpp", "Nominal DPP", "required");
-		$this->form_validation->set_rules("jmlh_angsuran", "Jumlah Angsuran", "required");
 		$this->form_validation->set_rules("password", "Password", "required");
-		$this->form_validation->set_rules("stts", "Status", "callback_check_select_stts");
 		$this->form_validation->set_rules("nm_siswa", "Nama", "required");
 		$this->form_validation->set_rules("jk_siswa", "Jenis Kelamin", "callback_check_select_jk_siswa");
 		$this->form_validation->set_rules("tmpt_lahir", "Tempat Lahir", "required");
@@ -84,13 +81,7 @@ class DataDPPSiswa extends CI_Controller
 		if (!$this->form_validation->run()) {
 			$this->index();
 		} else {
-			$nominal = $this->input->post('nmnl_dpp');
-			$jumlah = $this->input->post('jmlh_angsuran');
-			$nominal_angsuran =  $nominal / $jumlah;
-
-
 			$this->Siswa_Model->tambah_data();
-			$this->DPPSiswa_Model->tambah_data($nominal_angsuran);
 			$this->session->set_flashdata('flash_dppsiswa', 'Disimpan');
 			redirect('DataDPPSiswa');
 		}

@@ -66,14 +66,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= base_url() ?>DataJenisPembayaran" class="nav-link">
-              <i class="fas fa-tags"></i>
-              <p>
-                Data Jenis Pembayaran Ujian
-              </p>
-            </a>
-          </li>
 
           <!-- Data Tahun Ajaran -->
           <li class="nav-item">
@@ -105,7 +97,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url() ?>DataNaikKelas" class="nav-link">
+              <a href="<?= base_url() ?>DataBroadcast" class="nav-link">
                 <i class="fas fa-check"></i>
                 <p>
                   Broadcash SPP
@@ -148,23 +140,7 @@
                   </p>
                 </a>
               </li>
-
-              <li class="nav-item">
-                <a href="<?= base_url() ?>DataLaporanRekapan" class="nav-link">
-                  <i class="fas fa-list-alt"></i>
-                  <p>Rekapan Pembayaran</p>
-                </a>
-              </li>
-
             </ul>
-          <li class="nav-item">
-            <a href="<?= base_url() ?>DataLaporanPemasukan" class="nav-link">
-              <i class="fas fa-hand-holding-usd"></i>
-              <p>
-                Data Laporan Pemasukan
-              </p>
-            </a>
-          </li>
         <?php } ?>
         <?php if ($this->session->userdata('level') == 'siswa') { ?>
           <li class="nav-item">
