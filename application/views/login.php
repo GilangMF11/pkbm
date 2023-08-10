@@ -28,7 +28,7 @@
 
 
 
-            <a href="<?= base_url('assets/') ?>index2.html"><b>PKMBM Kembaran</b></a>
+            <a href="<?= base_url('assets/') ?>index2.html"><b>PKBM Kembaran</b></a>
             <p style="font-size: smaller;"><b>Sistem Informasi Pembayaran</b></p>
 
         </div>

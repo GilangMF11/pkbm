@@ -78,6 +78,9 @@
                                                 <td>
                                                     <?php if ($dataPembayaran['no_transaksi'] != '-') { ?>
                                                         <a href="<?= base_url() ?>DataPembayaranSPP/hapusDetailTransaksi/<?= $dataPembayaran['no_transaksi'] ?>/<?= $nisn ?>" class="btn btn-danger" onclick="return confirm('yakin ?')">Hapus Transaksi</a>
+                                                        <a href="<?= base_url() ?>DataPembayaranSPP/printDataPembayaranSPPbulan/<?= $nisn ?>" class="btn btn-primary">
+            <i class="fas fa-print"></i> Cetak
+        </a>
                                                     <?php } else {
                                                         echo '-';
                                                     } ?>
@@ -117,6 +120,12 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div class="card-footer">
+            <a href="<?= base_url() ?>DataPembayaranSPP/cetakDetailTransaksi/<?= $nisn ?>" class="btn btn-primary" target="_blank">
+                <i class="fas fa-print"></i> Cetak Detail Transaksi
+            </a>
+        </div>
                             <!-- ./card-body -->
                         </div>
                         <!-- /.card -->

@@ -121,14 +121,13 @@
 
 
                     <td>
-                      <div class="btn-group">
+                      <div class="btn-group text-center">
                         <?php if ($this->session->userdata('level') == 'admin') { ?>
                           <a href="<?= base_url() ?>DataTahunAjaran/hapus/<?= $row->kode_ta ?>" class="btn btn-danger" onclick="return confirm('yakin ?')">Hapus</a>
 
 
                           <a href="<?= base_url() ?>DataTahunAjaran/ubah/<?= $row->kode_ta ?>" class="btn btn-warning">update</a>
                         <?php } ?>
-                        <a href="<?= base_url() ?>DataTahunAjaran/konfigurasiUjian/<?= $row->kode_ta ?>" class="btn btn-primary">config Ujian</a>
                       </div>
                     </td>
 

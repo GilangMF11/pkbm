@@ -147,4 +147,23 @@ class DataPembayaranSPP_Model extends CI_Model
         }
         return $this->db->get()->result();
     }
+
+    public function insertPesan($nisn, $pesan)
+    {
+        $data = array(
+            'nisn' => $nisn,
+            'pesan' => $pesan,
+            'tanggal' => date('Y-m-d H:i:s')
+        );
+        $this->db->insert('tbl_pesan', $data);
+    }
+
+    public function insertPesanForAllSiswa($pesan)
+    {
+        $dataSiswa = $this->db->select('nisn')->get('tbl_siswa')->result();
+        
+        foreach ($dataSiswa as $siswa) {
+            $this->insertPesan($siswa->nisn, $pesan);
+        }
+    }
 }

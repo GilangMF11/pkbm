@@ -96,14 +96,6 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?= base_url() ?>DataBroadcast" class="nav-link">
-                <i class="fas fa-check"></i>
-                <p>
-                  Broadcash SPP
-                </p>
-              </a>
-            </li>
           <?php } ?>
 
 
@@ -143,14 +135,6 @@
             </ul>
         <?php } ?>
         <?php if ($this->session->userdata('level') == 'siswa') { ?>
-          <li class="nav-item">
-            <a href="<?= base_url() ?>DataLaporanRekapan/detail/<?= $this->session->userdata('id_user') ?>" class="nav-link">
-              <i class="fas fa-hand-holding-usd"></i>
-              <p>
-                Tagihan Pembayaran
-              </p>
-            </a>
-          </li>
           <li class="nav-item">
             <a href="<?= base_url() ?>DataLaporanRekapan/riwayatpembayaran/<?= $this->session->userdata('id_user') ?>" class="nav-link">
               <i class="fas fa-history"></i>

@@ -1,55 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Data Pembayaran SPP</title>
-    <!-- Include any necessary CSS styling here -->
+    <title>Laporan Data Pembayaran SPP</title>
     <style>
+        /* Add any necessary CSS styling for the printable content here */
         body {
             font-family: Arial, sans-serif;
         }
-        /* Add any other custom styles for the PDF */
-        /* For example, you can hide some elements that are not relevant in the PDF */
-        .hide-in-pdf {
-            display: none;
-        }
-        /* Adjust the table styles to fit the PDF layout */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
+        /* ... */
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Data Pembayaran SPP</h1>
-    <table>
+    <!-- Printable content goes here -->
+    <h2>Data Pembayaran SPP <?= $dataSiswa->nama_siswa ?></h2>
+    <table border="1" cellspacing="0" cellpadding="5">
         <thead>
             <tr>
-                <th>No</th>
-                <th>NISN</th>
-                <th>Nama</th>
-                <th>Paket</th>
-                <th>Jenis</th>
-                <th>Nominal spp</th>
+                <th>Bulan</th>
+                <th>Nominal Pembayaran</th>
+                <th>Tanggal</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($dataSiswa as $row): ?>
+            <?php foreach ($ganjil as $angkaBulan => $namaBulan) :
+                $dataPembayaran = DataPembayaranSpp($pembayaran, $valueTahunAjaran->kode_ta, $angkaBulan);
+            ?>
                 <tr>
-                    <td><?= $row->no ?></td>
-                    <td><?= $row->nisn ?></td>
-                    <td><?= $row->nama_siswa ?></td>
-                    <td><?= $row->kode_jurusan ?></td>
-                    <td><?= $row->kategori ?></td>
-                    <td><?= $row->nominal_jenis ?></td>
+                    <td><?= $namaBulan ?></td>
+                    <td><?= $dataPembayaran['nominal'] ?></td>
+                    <td><?= $dataPembayaran['tanggal'] ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+    <!-- ... Additional content ... -->
 </body>
 </html>

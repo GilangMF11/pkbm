@@ -189,7 +189,7 @@ class DataPembayaranSPP extends CI_Controller
 	public function printDataPembayaranSPP()
 	{
 		$data['dataSiswa'] = $this->DataPembayaranSPP_Model->getDataSIswaJoinJenisSPP();
-		$this->load->view('print_data_pembayaran_spp', $data);
+		$this->load->view('DataPembayaranSPP/detailTransaksi', $data);
 	}
 
 	//PDF
@@ -205,7 +205,7 @@ class DataPembayaranSPP extends CI_Controller
 		}
 
 		// Load the PDF view into a variable
-		$html = $this->load->view('DataPembayaranSPP/print_data_pembayaran_spp', $data, true);
+		$html = $this->load->view('DataPembayaranSPP/detailTransaksi', $data, true);
 
 		// Generate the PDF using Dompdf
 		$dompdf = new Dompdf();
@@ -217,4 +217,82 @@ class DataPembayaranSPP extends CI_Controller
 		$dompdf->stream('data_pembayaran_spp.pdf', array('Attachment' => 0));
 	}
 
+	// Broadcast
+	public function broadcast()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('templates/sidebar');
+		$this->load->view('broadcashSPP/index', $data);
+		$this->load->view('templates/footer');
+	}
+
+
+	public function insert_pesan()
+	{
+		$pesan = $this->input->post('pesan');
+		
+		if (!empty($pesan)) {
+			$this->load->model('DataPembayaranSPP_Model');
+			
+			if ($this->session->userdata('level') == 'admin') {
+				// Jika ingin mengirim pesan untuk semua siswa
+				$this->DataPembayaranSPP_Model->insertPesanForAllSiswa($pesan);
+			} else {
+				// Jika hanya untuk satu siswa, Anda perlu menentukan nisn dan tanggal
+				$nisn = $this->session->userdata('nisn');
+				$this->DataPembayaranSPP_Model->insertPesan($nisn, $pesan);
+			}
+			
+			$this->session->set_flashdata('flash_broadcast', 'Pesan berhasil dikirim');
+		} else {
+			$this->session->set_flashdata('flash_broadcast', 'Pesan tidak boleh kosong');
+		}
+		
+		redirect('DataPemabyaranSPP/broadcast'); // Ganti dengan URL halaman yang sesuai
+	}
+	
+
+	public function printDataPembayaranSPPbulan($nisn)
+{
+    $data['dataSiswa'] = $this->DataPembayaranSPP_Model->getDataSIswaJoinJenisSPPByNISN($nisn);
+	        // Load required data
+			$data['nisn'] = $nisn;
+			$data['dataSiswa'] = $this->DataPembayaranSPP_Model->getDataSIswaJoinJenisSPPByNISN($nisn);
+			$data['ganjil'] = [7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'];
+			$data['genap'] = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni'];
+			$data['tahunAjaran'] = $this->DataPembayaranSPP_Model->getTagihanSPP($data['dataSiswa']->kode_ta, $data['dataSiswa']->tahun_keluar);
+			$data['pembayaran'] = $this->DataPembayaranSPP_Model->DetailDataPembayaranSPP($nisn);
+	
+
+    if (!$data['dataSiswa']) {
+        show_error('Siswa tidak ditemukan', 404);
+        return;
+    }
+
+    $this->load->view('DataPembayaranSPP/print_data_pembayaran_spp', $data);
+}
+
+
+	public function cetakDetailTransaksi($nisn)
+    {
+        // Load required data
+        $data['nisn'] = $nisn;
+        $data['dataSiswa'] = $this->DataPembayaranSPP_Model->getDataSIswaJoinJenisSPPByNISN($nisn);
+        $data['ganjil'] = [7 => 'Juli', 8 => 'Agustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'];
+        $data['genap'] = [1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 5 => 'Mei', 6 => 'Juni'];
+        $data['tahunAjaran'] = $this->DataPembayaranSPP_Model->getTagihanSPP($data['dataSiswa']->kode_ta, $data['dataSiswa']->tahun_keluar);
+        $data['pembayaran'] = $this->DataPembayaranSPP_Model->DetailDataPembayaranSPP($nisn);
+
+        // Load the PDF view into a variable
+        $html = $this->load->view('DataPembayaranSPP/cetak_detail_transaksi', $data, true);
+
+        // Generate the PDF using Dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // Output the PDF to the browser
+        $dompdf->stream('detail_transaksi.pdf', array('Attachment' => 0));
+    }
 }

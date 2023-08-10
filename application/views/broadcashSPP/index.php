@@ -51,7 +51,7 @@
               <div class="row">
                 <div class="col-md-8">
                   <?= validation_errors(); ?>
-                  <form action="<?= base_url() ?>DataBroadcast/validation_form" method="post" accept-charset="utf-8">
+                  <form action="<?= base_url() ?>DataPembayaranSPP/insert_pesan" method="post" accept-charset="utf-8">
                     <div class="card-body">
                       <!-- <div class="form-group">
                       <label for="exampleInputEmail1">Kode Jenis SPP</label>

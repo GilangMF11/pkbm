@@ -4,12 +4,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Data DPP Siswa</h1>
+          <h1>Data SPP Siswa</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="Welcome">Dashboard</a></li>
-            <li class="breadcrumb-item active">Data DPP Siswa</li>
+            <li class="breadcrumb-item active">Data SPP Siswa</li>
           </ol>
         </div>
       </div>
@@ -20,14 +20,14 @@
   <section class="content">
     <!-- NOTIFIKASI -->
     <?php
-    if ($this->session->flashdata('flash_dppsiswa')) { ?>
+    if ($this->session->flashdata('flash_sppsiswa')) { ?>
       <div class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h6>
           <i class="icon fas fa-check"></i>
           Data Berhasil
           <strong>
-            <?= $this->session->flashdata('flash_dppsiswa');   ?>
+            <?= $this->session->flashdata('flash_sppsiswa');   ?>
           </strong>
         </h6>
       </div>
@@ -38,7 +38,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5 class="card-title">Tambah Data DPP Siswa</h5>
+              <h5 class="card-title">Tambah Data SPP Siswa</h5>
               <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
@@ -50,7 +50,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <?= validation_errors(); ?>
-                  <form action="<?= base_url() ?>DataDPPSiswa/validation_form" method="post" accept-charset="utf-8">
+                  <form action="<?= base_url() ?>DataSPPSiswa/validation_form" method="post" accept-charset="utf-8">
                     <div class="card-body">
                       <!-- data Input Siswa -->
                       <h3>Data Siswa</h3>
@@ -193,7 +193,7 @@
               <tbody>
                 <?php
                 $no = 1;
-                foreach ($dppsiswa1 as $row) { ?>
+                foreach ($sppsiswa1 as $row) { ?>
                   <tr>
                     <td><?= $no ?></td>
                     <td><?= $row->nisn ?></td>
@@ -206,8 +206,8 @@
                       <div class="btn-group">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailsiswa" data-nisn="<?= $row->nisn ?>">Detail Siswa</button>
                         <?php if ($this->session->userdata('level') == 'admin') { ?>
-                          <a href="<?= base_url() ?>DataDPPSiswa/hapus/<?= $row->nisn ?>" class="btn btn-danger" onclick="return confirm('yakin ?')">Hapus</a>
-                          <a href="<?= base_url() ?>DataDPPSiswa/ubah/<?= $row->nisn ?>" class="btn btn-warning">Update</a>
+                          <a href="<?= base_url() ?>DataSPPSiswa/hapus/<?= $row->nisn ?>" class="btn btn-danger" onclick="return confirm('yakin ?')">Hapus</a>
+                          <a href="<?= base_url() ?>DataSPPSiswa/ubah/<?= $row->nisn ?>" class="btn btn-warning">Update</a>
                         <?php } ?>
                       </div>
                     </td>
@@ -313,12 +313,12 @@
 <!-- /.modal -->
 <!-- end modal detail siswa -->
 
-<!-- modal detail dpp-->
-<div class="modal fade" id="detailDPP">
+<!-- modal detail spp-->
+<div class="modal fade" id="detailSPP">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Detail Data DPP</h4>
+        <h4 class="modal-title">Detail Data SPP</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -331,8 +331,8 @@
               <td id="nisn"></td>
             </tr>
             <tr>
-              <th>Nominal DPP</th>
-              <td id="nominal_dpp"></td>
+              <th>Nominal SPP</th>
+              <td id="nominal_spp"></td>
             </tr>
             <tr>
               <th>Jumlah Angsuran</th>
